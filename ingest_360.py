@@ -2,11 +2,21 @@ import os
 import json
 import datetime
 import time
+import sys
 import wget
 import _thread
 
-with open('config.json') as f:
-	config = json.load(f)
+config = ''
+
+if sys.argv[1]:
+	try:
+		with open(sys.argv[1]) as f:
+			config = json.load(f)
+	except Exception as ex:
+		print(ex)
+		print("No json config provided in arguments or it failed, attempting to load default config.json !")
+		with open('config.json') as f:
+			config = json.load(f)
 
 print("Media Directory: %s" % config["media_dir"])
 today = datetime.datetime.now()
