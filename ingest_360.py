@@ -42,6 +42,6 @@ for t in range(4):
 			print("Camera directory %s does not exist, creating" % c["name"])
 			os.mkdir(wd + c["name"])
 		print("Ingesting camera %s" % c["name"])
-		_thread.start_new_thread(getFile, (c["url"], c["name"] + "/" + c["name"] + "_" + now.isoformat(timespec='seconds') + ".jpg"))
+		_thread.start_new_thread(getFile, (c["url"], c["name"] + "/" + config["group_name"] + "_" + c["name"] + "_" + now.isoformat(timespec='seconds') + ".jpg"))
 		#image = wget.download(c["url"],wd + filename)
 	time.sleep(15)
